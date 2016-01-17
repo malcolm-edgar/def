@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven {
+        url "http://repo.maven.apache.org/maven2"
+    }
+}
+dependencies {
+    compile "com.amazonaws:aws-java-sdk-dynamodb:1.10.37"
+    compile "com.fasterxml.jackson.core:jackson-databind:2.5.3"
+    compile "org.slf4j:slf4j-api:1.7.13"
+    testCompile "junit:junit:4.12"
+    testRuntime "org.slf4j:slf4j-simple:1.7.13"
+}
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "jacocoHtml"
+    }
+}
